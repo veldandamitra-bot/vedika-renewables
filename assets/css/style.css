@@ -1399,6 +1399,132 @@ details[open] .faq-icon { transform: rotate(45deg); }
 }
 .scroll-top:hover { background: var(--forest-lt); transform: translateY(-2px); }
 
+/* ── WhatsApp Float ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px; left: 26px;
+  z-index: 800;
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  font-size: 1.6rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.45);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 24px rgba(37,211,102,0.55);
+}
+.whatsapp-float .fa-whatsapp { line-height: 1; }
+.wa-tooltip {
+  position: absolute;
+  left: 64px; bottom: 50%;
+  transform: translateY(50%);
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 0.78rem;
+  font-family: var(--ff-body);
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.wa-tooltip::before {
+  content: '';
+  position: absolute;
+  right: 100%; top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: #1a1a1a;
+}
+.whatsapp-float:hover .wa-tooltip { opacity: 1; }
+
+/* ── Engagement Popup ── */
+.popup-overlay {
+  position: fixed; inset: 0;
+  z-index: 2000;
+  background: rgba(10,20,35,0.65);
+  backdrop-filter: blur(3px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.popup-overlay.active { opacity: 1; visibility: visible; }
+.popup-box {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 460px; width: 100%;
+  padding: 44px 40px 36px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+  transform: translateY(20px);
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.2);
+}
+.popup-overlay.active .popup-box { transform: translateY(0); }
+.popup-close {
+  position: absolute; top: 14px; right: 16px;
+  background: none; border: none;
+  font-size: 1.5rem; line-height: 1;
+  color: #888; cursor: pointer;
+  padding: 4px 8px;
+}
+.popup-close:hover { color: #222; }
+.popup-icon {
+  font-size: 2.2rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.popup-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest-lt);
+  margin-bottom: 10px;
+}
+.popup-box h3 {
+  font-family: var(--ff-head);
+  font-size: clamp(1.2rem, 3vw, 1.45rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.popup-sub {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.popup-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.9rem;
+  padding: 13px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+.popup-dismiss {
+  display: block;
+  background: none; border: none;
+  font-size: 0.78rem;
+  color: #aaa;
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0 auto;
+}
+.popup-dismiss:hover { color: #666; }
+@media (max-width: 480px) {
+  .popup-box { padding: 36px 24px 28px; }
+}
+
 /* sr-only */
 .sr-only {
   position: absolute;

@@ -180,6 +180,40 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  /* ── Engagement Popup ── */
+  const popupOverlay = document.getElementById('popup-overlay');
+  const popupClose   = document.getElementById('popup-close');
+  const popupDismiss = document.getElementById('popup-dismiss');
+  const popupCta     = document.getElementById('popup-cta');
+
+  const showPopup = () => {
+    if (sessionStorage.getItem('vr_popup_shown')) return;
+    sessionStorage.setItem('vr_popup_shown', '1');
+    popupOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closePopup = () => {
+    popupOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  // Show after 20 seconds
+  const popupTimer = setTimeout(showPopup, 20000);
+
+  // Exit intent: mouse moves toward top of viewport
+  document.addEventListener('mouseleave', e => {
+    if (e.clientY < 10) showPopup();
+  });
+
+  popupClose.addEventListener('click', closePopup);
+  popupDismiss.addEventListener('click', closePopup);
+  popupOverlay.addEventListener('click', e => { if (e.target === popupOverlay) closePopup(); });
+  popupCta.addEventListener('click', () => { closePopup(); clearTimeout(popupTimer); });
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+
   /* ── Scroll to Top ── */
   const scrollTop = document.getElementById('scroll-top');
   window.addEventListener('scroll', () => {
