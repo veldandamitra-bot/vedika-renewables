@@ -214,6 +214,217 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  /* ── Chat Widget ── */
+  const WA_NUMBER  = '918686929339';
+  const WA_BASE    = `https://wa.me/${WA_NUMBER}?text=`;
+
+  const FLOWS = {
+    start: {
+      msg: "Hi there! 👋 I'm Vedika's virtual assistant. I can answer questions about solar panels, BESS, costs and subsidies — or connect you to our team instantly.\n\nWhat would you like to know?",
+      replies: [
+        { label: '💰 Solar panel cost',     next: 'cost'       },
+        { label: '🏛️ Government subsidy',   next: 'subsidy'    },
+        { label: '⚡ How does it work?',    next: 'howworks'   },
+        { label: '📅 Installation time',    next: 'timeline'   },
+        { label: '🔋 What is BESS?',        next: 'bess'       },
+        { label: '📞 Talk to our team',     next: 'escalate', wa: true }
+      ]
+    },
+    cost: {
+      msg: "Solar system pricing depends on size and type:\n\n🏠 Residential (1–10 kWp): ₹50,000–₹6.5 lakhs\n🏢 Commercial (10–100 kWp): ₹4.5–45 lakhs\n🏭 Industrial (100 kWp+): ₹45 lakhs+\n\nMost customers recover their investment in 3–5 years and then generate free electricity for 20+ years.",
+      replies: [
+        { label: '📊 Calculate my savings',  next: 'calc'      },
+        { label: '🏛️ Is there a subsidy?',   next: 'subsidy'   },
+        { label: '📞 Get a free quote',       next: 'escalate', wa: true },
+        { label: '🔙 Back to menu',           next: 'start'     }
+      ]
+    },
+    subsidy: {
+      msg: "Yes! Under the PM Surya Ghar Muft Bijli Yojana:\n\n✅ Up to 3 kWp: ₹30,000/kWp subsidy\n✅ 3–10 kWp: ₹18,000/kWp for extra capacity\n✅ Max benefit: ₹78,000 per household\n\nCommercial & industrial systems get 40% accelerated depreciation benefit instead.\n\nWe handle all subsidy paperwork for you.",
+      replies: [
+        { label: '💰 How much will it cost me?', next: 'cost'     },
+        { label: '📋 What documents needed?',    next: 'docs'     },
+        { label: '📞 Start my application',      next: 'escalate', wa: true },
+        { label: '🔙 Back to menu',              next: 'start'    }
+      ]
+    },
+    howworks: {
+      msg: "Our process is simple:\n\n1️⃣ Free site survey & savings estimate\n2️⃣ Custom system design & proposal\n3️⃣ Approvals & net-meter application\n4️⃣ Installation (1–3 days typically)\n5️⃣ Commissioning & handover\n6️⃣ Ongoing 24/7 monitoring\n\nYou start saving from the very first bill after installation.",
+      replies: [
+        { label: '📅 How long does it take?',  next: 'timeline'  },
+        { label: '💰 How much does it cost?',  next: 'cost'      },
+        { label: '📞 Book a free survey',      next: 'escalate', wa: true },
+        { label: '🔙 Back to menu',            next: 'start'     }
+      ]
+    },
+    timeline: {
+      msg: "Here's a typical timeline:\n\n📋 Survey & design: 2–3 days\n📄 Approvals & DISCOM: 1–3 weeks\n🔧 Installation: 1–3 days\n⚡ Commissioning: Same day\n\nTotal: Usually 3–5 weeks from first call to first unit generated.\n\nWe manage everything — you just wait for your first reduced electricity bill!",
+      replies: [
+        { label: '📞 Book a survey now',      next: 'escalate', wa: true },
+        { label: '💰 Check costs',            next: 'cost'     },
+        { label: '🔙 Back to menu',           next: 'start'    }
+      ]
+    },
+    bess: {
+      msg: "BESS (Battery Energy Storage System) stores solar energy and releases it when you need it:\n\n🌞 Day: Solar charges batteries & powers your loads\n🌙 Night: Batteries power your loads\n⚡ Grid cut: Battery kicks in instantly — no interruption\n\nBenefits:\n✅ Replace expensive diesel generators\n✅ Cut peak-hour grid import costs\n✅ 100% clean backup power",
+      replies: [
+        { label: '💰 BESS pricing',          next: 'besscost'   },
+        { label: '📞 Discuss my project',    next: 'escalate', wa: true },
+        { label: '🔙 Back to menu',          next: 'start'      }
+      ]
+    },
+    besscost: {
+      msg: "BESS pricing by capacity:\n\n🔋 50 kWh system: ₹25–35 lakhs\n🔋 100 kWh system: ₹45–60 lakhs\n🔋 500 kWh+ system: Custom quote\n\nPayback is typically 4–6 years through diesel savings and peak tariff avoidance. For heavy diesel users, it can be even faster.",
+      replies: [
+        { label: '📞 Get a custom quote',    next: 'escalate', wa: true },
+        { label: '🔙 Back to menu',          next: 'start'     }
+      ]
+    },
+    docs: {
+      msg: "For residential solar with subsidy, you need:\n\n📄 Aadhaar card\n📄 Electricity bill (last 3 months)\n📄 Property ownership proof\n📄 Bank account details\n📄 Passport photo\n\nThat's it — we handle all DISCOM applications, net meter requests and subsidy claims on your behalf.",
+      replies: [
+        { label: '📞 Start the process',     next: 'escalate', wa: true },
+        { label: '🔙 Back to menu',          next: 'start'     }
+      ]
+    },
+    calc: {
+      msg: "You can use our free savings calculator right on this page! 👆\n\nJust enter your monthly electricity bill and state — it will show your estimated system size, annual savings, payback period, CO₂ avoided and equivalent trees saved.",
+      replies: [
+        { label: '📊 Go to calculator', scroll: 'calculator'    },
+        { label: '📞 Talk to an expert', next: 'escalate', wa: true },
+        { label: '🔙 Back to menu',      next: 'start'          }
+      ]
+    },
+    escalate: {
+      msg: "Great — our team is available Mon–Sat, 9 AM to 6 PM.\n\nClick below to open WhatsApp and chat directly with our energy consultant. We typically respond within a few minutes during business hours. 🙏",
+      replies: [
+        { label: '💬 Open WhatsApp now', wa: true, wamsg: `Hi Vedika Renewables, I have a question about solar energy. Can someone help me?` },
+        { label: '🔙 Back to menu',      next: 'start' }
+      ]
+    }
+  };
+
+  const chatWidget  = document.getElementById('chat-widget');
+  const chatToggle  = document.getElementById('chat-toggle');
+  const chatPanel   = document.getElementById('chat-panel');
+  const chatMsgs    = document.getElementById('chat-messages');
+  const chatQR      = document.getElementById('chat-quick-replies');
+  const chatInput   = document.getElementById('chat-input');
+  const chatSend    = document.getElementById('chat-send');
+  const chatClose   = document.getElementById('chat-header-close');
+  const chatUnread  = document.getElementById('chat-unread');
+  let chatOpened    = false;
+
+  const addMsg = (text, type) => {
+    const div = document.createElement('div');
+    div.className = `chat-msg ${type}`;
+    div.innerHTML = text.replace(/\n/g, '<br>');
+    chatMsgs.appendChild(div);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    return div;
+  };
+
+  const showTyping = () => {
+    const t = document.createElement('div');
+    t.className = 'chat-typing';
+    t.innerHTML = '<span></span><span></span><span></span>';
+    t.id = 'chat-typing';
+    chatMsgs.appendChild(t);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  };
+
+  const hideTyping = () => {
+    const t = document.getElementById('chat-typing');
+    if (t) t.remove();
+  };
+
+  const showReplies = replies => {
+    chatQR.innerHTML = '';
+    replies.forEach(r => {
+      const btn = document.createElement('button');
+      btn.className = 'chat-qr' + (r.wa ? ' whatsapp-qr' : '');
+      btn.textContent = r.label;
+      btn.addEventListener('click', () => {
+        if (r.scroll) {
+          closeChat();
+          document.getElementById(r.scroll).scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+        if (r.wa) {
+          const msg = encodeURIComponent(r.wamsg || 'Hi Vedika Renewables, I need help with solar energy.');
+          window.open(WA_BASE + msg, '_blank');
+          return;
+        }
+        chatQR.innerHTML = '';
+        addMsg(r.label, 'user');
+        const flow = FLOWS[r.next];
+        if (!flow) return;
+        showTyping();
+        setTimeout(() => {
+          hideTyping();
+          addMsg(flow.msg, 'bot');
+          if (flow.replies) showReplies(flow.replies);
+        }, 900);
+      });
+      chatQR.appendChild(btn);
+    });
+  };
+
+  const openChat = () => {
+    chatWidget.classList.add('open');
+    chatToggle.setAttribute('aria-expanded', 'true');
+    chatUnread.classList.add('hidden');
+    if (!chatOpened) {
+      chatOpened = true;
+      showTyping();
+      setTimeout(() => {
+        hideTyping();
+        const start = FLOWS.start;
+        addMsg(start.msg, 'bot');
+        showReplies(start.replies);
+      }, 800);
+    }
+  };
+
+  const closeChat = () => {
+    chatWidget.classList.remove('open');
+    chatToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  chatToggle.addEventListener('click', () => chatWidget.classList.contains('open') ? closeChat() : openChat());
+  chatClose.addEventListener('click', closeChat);
+
+  const sendUserMsg = () => {
+    const val = chatInput.value.trim();
+    if (!val) return;
+    chatInput.value = '';
+    chatQR.innerHTML = '';
+    addMsg(val, 'user');
+    const lower = val.toLowerCase();
+    let next = 'escalate';
+    if (/cost|price|rate|how much|₹|rs|rupee/i.test(lower)) next = 'cost';
+    else if (/subsid|pm surya|scheme|government|free/i.test(lower)) next = 'subsidy';
+    else if (/work|process|how|step/i.test(lower)) next = 'howworks';
+    else if (/time|days|week|long|install/i.test(lower)) next = 'timeline';
+    else if (/bess|battery|storage|diesel/i.test(lower)) next = 'bess';
+    else if (/document|paper|aadhaar|proof/i.test(lower)) next = 'docs';
+    else if (/calc|saving|save|bill/i.test(lower)) next = 'calc';
+    showTyping();
+    setTimeout(() => {
+      hideTyping();
+      const flow = FLOWS[next];
+      addMsg(flow.msg, 'bot');
+      if (flow.replies) showReplies(flow.replies);
+    }, 900);
+  };
+
+  chatSend.addEventListener('click', sendUserMsg);
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendUserMsg(); });
+
+  // Show unread badge after 8s if not opened
+  setTimeout(() => { if (!chatOpened) chatUnread.classList.remove('hidden'); }, 8000);
+
+
   /* ── Energy Savings Calculator ── */
   const stateTariffs = {
     TG: 6.75, AP: 6.50, KA: 7.10, MH: 8.20,

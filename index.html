@@ -1237,6 +1237,41 @@
   <span class="wa-tooltip">Chat with us</span>
 </a>
 
+<!-- Chat Widget -->
+<div class="chat-widget" id="chat-widget">
+
+  <!-- Toggle button -->
+  <button class="chat-toggle" id="chat-toggle" aria-label="Open chat assistant" aria-expanded="false">
+    <i class="fa-solid fa-comments chat-toggle-icon"></i>
+    <i class="fa-solid fa-xmark chat-toggle-close"></i>
+    <span class="chat-toggle-label">Ask us</span>
+    <span class="chat-unread" id="chat-unread">1</span>
+  </button>
+
+  <!-- Chat panel -->
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Chat with Vedika Renewables">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <span class="chat-avatar"><i class="fa-solid fa-solar-panel"></i></span>
+        <div>
+          <strong>Vedika AI Assistant</strong>
+          <span class="chat-status"><span class="chat-dot"></span>Online — replies instantly</span>
+        </div>
+      </div>
+      <button class="chat-header-close" id="chat-header-close" aria-label="Close chat">&times;</button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages"></div>
+
+    <div class="chat-quick-replies" id="chat-quick-replies"></div>
+
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Type your question…" autocomplete="off" />
+      <button id="chat-send" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
 <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
   <i class="fa-solid fa-chevron-up"></i>
 </button>
