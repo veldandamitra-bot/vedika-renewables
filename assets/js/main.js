@@ -424,6 +424,93 @@ document.addEventListener('DOMContentLoaded', () => {
   // Show unread badge after 8s if not opened
   setTimeout(() => { if (!chatOpened) chatUnread.classList.remove('hidden'); }, 8000);
 
+  /* ── Voice Input (Speech Recognition) ── */
+  const micBtn      = document.getElementById('chat-mic');
+  const voiceBar    = document.getElementById('chat-voice-bar');
+  const voiceText   = document.getElementById('chat-voice-text');
+  const voiceStop   = document.getElementById('chat-voice-stop');
+  const SpeechRec   = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRec) {
+    micBtn.title = 'Voice not supported in this browser';
+    micBtn.style.opacity = '0.4';
+    micBtn.style.cursor  = 'not-allowed';
+  } else {
+    const recognition = new SpeechRec();
+    recognition.lang        = 'en-IN';
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+    let isListening = false;
+
+    const startListening = () => {
+      if (isListening) return;
+      isListening = true;
+      micBtn.classList.add('listening');
+      voiceBar.classList.add('active');
+      voiceText.textContent = 'Listening…';
+      chatInput.placeholder = 'Speak now…';
+      recognition.start();
+    };
+
+    const stopListening = () => {
+      isListening = false;
+      micBtn.classList.remove('listening');
+      voiceBar.classList.remove('active');
+      chatInput.placeholder = 'Type or speak your question…';
+      recognition.stop();
+    };
+
+    recognition.onresult = e => {
+      const transcript = Array.from(e.results)
+        .map(r => r[0].transcript).join('');
+      chatInput.value = transcript;
+      voiceText.textContent = `"${transcript}"`;
+      if (e.results[e.results.length - 1].isFinal) {
+        stopListening();
+        setTimeout(sendUserMsg, 300);
+      }
+    };
+
+    recognition.onerror = e => {
+      stopListening();
+      voiceText.textContent = 'Could not hear you. Try again.';
+    };
+
+    recognition.onend = () => { if (isListening) stopListening(); };
+
+    micBtn.addEventListener('click', () => isListening ? stopListening() : startListening());
+    voiceStop.addEventListener('click', stopListening);
+  }
+
+  /* ── Voice Output (Bot speaks replies) ── */
+  const speakMsg = text => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const clean   = text.replace(/[\u{1F300}-\u{1FFFF}]|[✅📋📄🔋⚡🌞🌙💰📞🏠🏢🏭📊🏛️📅🔙💬]/gu, '').replace(/\n/g, ' ').trim();
+    const utt     = new SpeechSynthesisUtterance(clean);
+    utt.lang      = 'en-IN';
+    utt.rate      = 0.95;
+    utt.pitch     = 1;
+    // pick a natural-sounding voice if available
+    const voices  = window.speechSynthesis.getVoices();
+    const preferred = voices.find(v => v.lang === 'en-IN') ||
+                      voices.find(v => v.lang.startsWith('en') && v.name.includes('Female')) ||
+                      voices.find(v => v.lang.startsWith('en'));
+    if (preferred) utt.voice = preferred;
+    window.speechSynthesis.speak(utt);
+  };
+
+  // Patch addMsg to also speak bot messages when voice was just used
+  const _origAddMsg = addMsg;
+  let voiceSession = false;
+  micBtn && micBtn.addEventListener('click', () => { voiceSession = true; });
+
+  // Override bot message delivery to speak if voice session active
+  const origShowTyping = showTyping;
+  document.addEventListener('chatBotReply', e => {
+    if (voiceSession) { speakMsg(e.detail); voiceSession = false; }
+  });
+
 
   /* ── Energy Savings Calculator ── */
   const stateTariffs = {
