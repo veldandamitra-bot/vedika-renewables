@@ -95,7 +95,8 @@
       <a href="#solutions"     class="nav-link">Solutions</a>
       <a href="#industries"    class="nav-link">Industries</a>
       <a href="#about"         class="nav-link">About</a>
-      <a href="#projects"      class="nav-link">Projects</a>
+      <a href="#projects"      class="nav-link">Capabilities</a>
+      <a href="#calculator"    class="nav-link">Calculator</a>
       <a href="#faq"           class="nav-link">FAQ</a>
       <a href="#contact"       class="nav-link">Contact</a>
     </nav>
@@ -639,6 +640,119 @@
 
     <div class="section-cta" data-aos="fade-up">
       <a href="#contact" class="btn-primary">Talk to our team <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     ENERGY SAVINGS CALCULATOR
+============================================ -->
+<section class="section" id="calculator">
+  <div class="container">
+    <div class="section-intro" data-aos="fade-up">
+      <p class="eyebrow">Free Savings Estimator</p>
+      <h2 class="section-h2">How much could you save<br />by switching to solar?</h2>
+      <p class="section-sub">Enter your details — get an instant estimate of system size, bill savings, payback period and your environmental impact.</p>
+    </div>
+
+    <div class="calc-wrap" data-aos="fade-up" data-aos-delay="80">
+      <div class="calc-form">
+
+        <div class="calc-row">
+          <div class="calc-field">
+            <label for="calc-state">Your State</label>
+            <select id="calc-state">
+              <option value="TG">Telangana (₹6.75/unit avg)</option>
+              <option value="AP">Andhra Pradesh (₹6.50/unit avg)</option>
+              <option value="KA">Karnataka (₹7.10/unit avg)</option>
+              <option value="MH">Maharashtra (₹8.20/unit avg)</option>
+              <option value="TN">Tamil Nadu (₹6.30/unit avg)</option>
+              <option value="GJ">Gujarat (₹5.80/unit avg)</option>
+              <option value="RJ">Rajasthan (₹6.90/unit avg)</option>
+              <option value="UP">Uttar Pradesh (₹6.00/unit avg)</option>
+              <option value="HR">Haryana (₹7.40/unit avg)</option>
+              <option value="DL">Delhi (₹7.00/unit avg)</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="calc-type">Property Type</label>
+            <select id="calc-type">
+              <option value="residential">Residential (Home)</option>
+              <option value="commercial">Commercial (Office / Shop)</option>
+              <option value="industrial">Industrial (Factory / Plant)</option>
+              <option value="agriculture">Agriculture (Farm / Pump)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-field">
+            <label for="calc-bill">Monthly Electricity Bill (₹)</label>
+            <input type="number" id="calc-bill" placeholder="e.g. 8000" min="500" max="1000000" />
+          </div>
+          <div class="calc-field">
+            <label for="calc-sunhours">Daily Sun Hours <span class="calc-hint">(your city)</span></label>
+            <select id="calc-sunhours">
+              <option value="5.5">Hyderabad — 5.5 hrs</option>
+              <option value="5.8">Ahmedabad — 5.8 hrs</option>
+              <option value="5.2">Bengaluru — 5.2 hrs</option>
+              <option value="5.0">Chennai — 5.0 hrs</option>
+              <option value="5.3">Pune — 5.3 hrs</option>
+              <option value="4.8">Mumbai — 4.8 hrs</option>
+              <option value="5.1">Delhi — 5.1 hrs</option>
+              <option value="5.6">Jaipur — 5.6 hrs</option>
+              <option value="5.4">Vijayawada — 5.4 hrs</option>
+              <option value="5.0">Other city — 5.0 hrs</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-primary calc-btn" id="calc-run">
+          Calculate my savings <i class="fa-solid fa-bolt"></i>
+        </button>
+      </div>
+
+      <!-- Results panel -->
+      <div class="calc-results" id="calc-results">
+        <div class="calc-results-inner">
+          <p class="calc-results-title">Your Estimated Impact</p>
+          <div class="calc-metrics-grid">
+            <div class="calc-metric">
+              <span class="calc-metric-icon"><i class="fa-solid fa-solar-panel"></i></span>
+              <span class="calc-metric-val" id="res-size">—</span>
+              <span class="calc-metric-label">Recommended system size</span>
+            </div>
+            <div class="calc-metric">
+              <span class="calc-metric-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+              <span class="calc-metric-val" id="res-saving">—</span>
+              <span class="calc-metric-label">Annual bill savings</span>
+            </div>
+            <div class="calc-metric">
+              <span class="calc-metric-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
+              <span class="calc-metric-val" id="res-payback">—</span>
+              <span class="calc-metric-label">Estimated payback period</span>
+            </div>
+            <div class="calc-metric">
+              <span class="calc-metric-icon"><i class="fa-solid fa-leaf"></i></span>
+              <span class="calc-metric-val" id="res-co2">—</span>
+              <span class="calc-metric-label">CO₂ avoided per year</span>
+            </div>
+            <div class="calc-metric">
+              <span class="calc-metric-icon"><i class="fa-solid fa-tree"></i></span>
+              <span class="calc-metric-val" id="res-trees">—</span>
+              <span class="calc-metric-label">Equivalent trees planted</span>
+            </div>
+            <div class="calc-metric">
+              <span class="calc-metric-icon"><i class="fa-solid fa-bolt"></i></span>
+              <span class="calc-metric-val" id="res-units">—</span>
+              <span class="calc-metric-label">Units generated per year</span>
+            </div>
+          </div>
+          <p class="calc-disclaimer">Estimates based on average tariffs, 80% self-consumption and standard system efficiency. Actual results depend on site survey.</p>
+          <a href="#contact" class="btn-primary calc-results-cta">Get a precise quote from our team <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

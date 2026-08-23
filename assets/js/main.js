@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Clone nav links into drawer
   const links = [
     ['#home','Home'], ['#solutions','Solutions'], ['#industries','Industries'],
-    ['#about','About'], ['#projects','Projects'], ['#faq','FAQ'], ['#contact','Contact']
+    ['#about','About'], ['#projects','Capabilities'], ['#calculator','Calculator'], ['#faq','FAQ'], ['#contact','Contact']
   ];
   links.forEach(([href, label]) => {
     const a = document.createElement('a');
@@ -212,6 +212,58 @@ document.addEventListener('DOMContentLoaded', () => {
       f.addEventListener('input', () => { f.style.borderColor = ''; });
     });
   }
+
+
+  /* ── Energy Savings Calculator ── */
+  const stateTariffs = {
+    TG: 6.75, AP: 6.50, KA: 7.10, MH: 8.20,
+    TN: 6.30, GJ: 5.80, RJ: 6.90, UP: 6.00, HR: 7.40, DL: 7.00
+  };
+  const costPerKWp = { residential: 55000, commercial: 50000, industrial: 45000, agriculture: 48000 };
+  const co2PerUnit  = 0.82;   // kg CO2 per kWh (India grid average)
+  const treesPerTon = 45;     // trees equivalent per tonne CO2 per year
+
+  const fmt = (n, dec = 0) => n.toLocaleString('en-IN', { maximumFractionDigits: dec });
+
+  document.getElementById('calc-run').addEventListener('click', () => {
+    const bill      = parseFloat(document.getElementById('calc-bill').value);
+    const state     = document.getElementById('calc-state').value;
+    const type      = document.getElementById('calc-type').value;
+    const sunHours  = parseFloat(document.getElementById('calc-sunhours').value);
+
+    if (!bill || bill < 500) {
+      document.getElementById('calc-bill').focus();
+      document.getElementById('calc-bill').style.borderColor = '#ef4444';
+      return;
+    }
+    document.getElementById('calc-bill').style.borderColor = '';
+
+    const tariff      = stateTariffs[state];
+    const monthlyUnits = bill / tariff;
+    const annualUnits  = monthlyUnits * 12;
+
+    // System size: daily consumption / sun hours / efficiency factor (0.8)
+    const dailyUnits   = monthlyUnits / 30;
+    const systemKWp    = Math.ceil((dailyUnits / sunHours / 0.8) * 10) / 10;
+
+    // Generation (assume 80% self-consumption, 20% exported/netmetered)
+    const annualGeneration = systemKWp * sunHours * 365 * 0.8;
+    const annualSaving     = Math.min(annualGeneration, annualUnits) * tariff;
+    const systemCost       = systemKWp * costPerKWp[type];
+    const payback          = systemCost / annualSaving;
+
+    const co2Tonnes = (annualGeneration * co2PerUnit) / 1000;
+    const trees     = Math.round(co2Tonnes * treesPerTon);
+
+    document.getElementById('res-size').textContent    = `${fmt(systemKWp, 1)} kWp`;
+    document.getElementById('res-saving').textContent  = `₹${fmt(annualSaving)}/yr`;
+    document.getElementById('res-payback').textContent = `${payback.toFixed(1)} years`;
+    document.getElementById('res-co2').textContent     = `${fmt(co2Tonnes, 1)} tonnes/yr`;
+    document.getElementById('res-trees').textContent   = `${fmt(trees)} trees/yr`;
+    document.getElementById('res-units').textContent   = `${fmt(annualGeneration)} kWh/yr`;
+
+    document.getElementById('calc-results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
 
 
   /* ── Engagement Popup ── */

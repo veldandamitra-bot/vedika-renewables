@@ -1377,6 +1377,149 @@ details[open] .faq-icon { transform: rotate(45deg); }
 }
 .footer-links-col ul a:hover { color: var(--accent-lt); }
 
+/* ── Energy Calculator ── */
+.section-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.calc-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+  align-items: start;
+}
+.calc-form {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 36px 32px;
+}
+.calc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.calc-field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  letter-spacing: 0.03em;
+}
+.calc-hint {
+  font-weight: 400;
+  color: var(--muted);
+}
+.calc-field select,
+.calc-field input[type="number"] {
+  border: 1.5px solid var(--rule);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  font-family: var(--ff-body);
+  color: var(--charcoal);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+.calc-field input[type="number"] {
+  background-image: none;
+  padding-right: 14px;
+}
+.calc-field select:focus,
+.calc-field input:focus { border-color: var(--primary); }
+.calc-btn {
+  width: 100%;
+  margin-top: 6px;
+  justify-content: center;
+  font-size: 0.95rem;
+  padding: 14px;
+}
+.calc-results {
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 280px;
+}
+.calc-results-inner {
+  background: var(--navy);
+  padding: 36px 32px;
+  height: 100%;
+}
+.calc-results-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-lt);
+  margin-bottom: 24px;
+}
+.calc-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.calc-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.calc-metric-icon {
+  font-size: 1rem;
+  color: var(--accent-lt);
+  margin-bottom: 2px;
+}
+.calc-metric-val {
+  font-family: var(--ff-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+}
+.calc-metric-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+}
+.calc-disclaimer {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.calc-results-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  padding: 12px 22px;
+  text-decoration: none;
+}
+@media (max-width: 1024px) {
+  .calc-wrap { grid-template-columns: 1fr; }
+  .calc-results { order: -1; }
+}
+@media (max-width: 640px) {
+  .calc-row { grid-template-columns: 1fr; }
+  .calc-metrics-grid { grid-template-columns: 1fr 1fr; }
+  .calc-form, .calc-results-inner { padding: 24px 20px; }
+}
+
 .footer-contact {
   display: flex;
   flex-direction: column;
