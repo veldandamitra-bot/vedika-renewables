@@ -1686,17 +1686,20 @@ details[open] .faq-icon { transform: rotate(45deg); }
   gap: 10px;
 }
 .chat-avatar {
-  width: 36px; height: 36px;
+  width: 38px; height: 38px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  border: 2px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.25);
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  padding: 3px;
 }
 .chat-avatar img {
   width: 100%; height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  border-radius: 50%;
 }
 .chat-header strong {
   display: block;
