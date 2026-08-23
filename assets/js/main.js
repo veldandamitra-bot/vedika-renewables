@@ -81,6 +81,40 @@ document.addEventListener('DOMContentLoaded', () => {
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
 
+  /* ── Hero Slideshow ── */
+  const slides   = document.querySelectorAll('.hero-slide');
+  const dots     = document.querySelectorAll('.hero-dot');
+  let current    = 0;
+  let slideTimer = null;
+
+  const goToSlide = idx => {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    // restart Ken Burns by re-triggering animation
+    const img = slides[current].querySelector('img');
+    img.style.animation = 'none';
+    img.offsetHeight; // reflow
+    img.style.animation = '';
+  };
+
+  const startAutoplay = () => {
+    slideTimer = setInterval(() => goToSlide(current + 1), 6000);
+  };
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      clearInterval(slideTimer);
+      goToSlide(parseInt(dot.getAttribute('data-index')));
+      startAutoplay();
+    });
+  });
+
+  startAutoplay();
+
+
   /* ── Animated Counters ── */
   const counters = document.querySelectorAll('.metric-value[data-target]');
 
