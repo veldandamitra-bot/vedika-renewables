@@ -983,20 +983,21 @@ ul, ol { list-style: none; }
 
 .leadership-grid { margin-top: 48px; display: flex; justify-content: center; }
 .leader-card {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 48px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  max-width: 900px;
+  max-width: 420px;
+  text-align: center;
 }
 .leader-img {
   width: 100%;
+  max-width: 380px;
   height: auto;
   object-fit: contain;
   border-radius: var(--r);
   display: block;
-  margin: 0 auto;
-  image-rendering: auto;
+  margin: 0 auto 28px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 .leader-card h3 {
   font-family: var(--font-head);
