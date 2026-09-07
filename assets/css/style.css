@@ -981,10 +981,10 @@ ul, ol { list-style: none; }
   box-shadow: 0 12px 48px rgba(0,0,0,0.4);
 }
 
-.leadership-grid { margin-top: 48px; }
+.leadership-grid { margin-top: 48px; display: flex; justify-content: center; }
 .leader-card {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 380px 1fr;
   gap: 48px;
   align-items: center;
   max-width: 900px;
@@ -995,6 +995,7 @@ ul, ol { list-style: none; }
   object-fit: contain;
   border-radius: var(--r);
   display: block;
+  margin: 0 auto;
   image-rendering: auto;
 }
 .leader-card h3 {
