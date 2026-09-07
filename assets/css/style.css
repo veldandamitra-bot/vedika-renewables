@@ -1356,8 +1356,9 @@ details[open] .faq-icon { transform: rotate(45deg); }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
 }
 
 .footer-logo-link img {
@@ -1581,18 +1582,27 @@ details[open] .faq-icon { transform: rotate(45deg); }
 .footer-social {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
+  margin-top: 20px;
 }
 .footer-social a {
-  font-family: var(--font-head);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.95rem;
   transition: var(--ease);
+  border: 1px solid rgba(255,255,255,0.12);
 }
-.footer-social a:hover { color: var(--accent-lt); }
+.footer-social a:hover {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+}
 
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
@@ -2099,8 +2109,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
   .mv-grid         { grid-template-columns: 1fr; }
   .contact-layout  { grid-template-columns: 1fr; gap: 48px; }
   .contact-aside   { position: static; }
-  .footer-grid     { grid-template-columns: 1fr 1fr; }
-  .footer-brand    { grid-column: span 2; }
+  .footer-grid     { grid-template-columns: 1fr 1fr 1fr; }
+  .footer-brand    { grid-column: span 3; }
 
   .solution-row {
     grid-template-columns: 1fr 28px;
