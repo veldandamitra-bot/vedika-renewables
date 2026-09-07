@@ -223,11 +223,12 @@ ul, ol { list-style: none; }
 }
 
 .nav-logo img {
-  height: 52px;
+  height: 72px;
   width: auto;
-  max-width: 200px;
+  max-width: 240px;
   object-fit: contain;
   transition: var(--ease);
+  image-rendering: auto;
 }
 .nav-logo:hover img { transform: translateY(-1px); }
 
