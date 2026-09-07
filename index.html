@@ -455,21 +455,9 @@
     <div class="contact-simple-grid" data-aos="fade-up" data-aos-delay="80">
 
       <div class="contact-simple-card">
-        <i class="fa-solid fa-phone contact-simple-icon"></i>
-        <h4>Phone</h4>
-        <a href="tel:+919959800007">+91 99598 00007</a>
-      </div>
-
-      <div class="contact-simple-card">
-        <i class="fa-brands fa-whatsapp contact-simple-icon" style="color:#25D366"></i>
-        <h4>WhatsApp</h4>
-        <a href="https://wa.me/919959800007?text=Hi%20Vedika%20Renewables%2C%20I%27m%20interested%20in%20your%20renewable%20energy%20services." target="_blank" rel="noopener">Chat with us</a>
-      </div>
-
-      <div class="contact-simple-card">
         <i class="fa-solid fa-envelope contact-simple-icon"></i>
         <h4>Email</h4>
-        <a href="mailto:karwakrishna@vedikarenewables.in">karwakrishna@vedikarenewables.in</a>
+        <a href="mailto:vedikarenewables@gmail.com">vedikarenewables@gmail.com</a>
       </div>
 
       <div class="contact-simple-card">
@@ -478,6 +466,55 @@
         <p>1-2-19,20 Domalguda, HimayatNagar,<br />Hyderabad, Telangana – 500029</p>
       </div>
 
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-wrap" data-aos="fade-up" data-aos-delay="100">
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label for="f-name">Full name <span class="req">*</span></label>
+            <input type="text" id="f-name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input type="email" id="f-email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-field">
+            <label for="f-phone">Phone</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="+91 00000 00000" />
+          </div>
+          <div class="form-field">
+            <label for="f-org">Organization</label>
+            <input type="text" id="f-org" name="organization" placeholder="Company or institution" />
+          </div>
+          <div class="form-field">
+            <label for="f-loc">Site location</label>
+            <input type="text" id="f-loc" name="location" placeholder="City, state" />
+          </div>
+          <div class="form-field">
+            <label for="f-type">Project type</label>
+            <select id="f-type" name="project_type">
+              <option value="">Select a project type</option>
+              <option>Solar</option>
+              <option>BESS / Battery Energy Storage</option>
+              <option>Green Hydrogen</option>
+              <option>Green Ammonia</option>
+              <option>Compressed Biogas (CBG)</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" rows="5" placeholder="Tell us about your requirement, site or any questions."></textarea>
+        </div>
+        <div id="form-status" class="form-status" aria-live="polite"></div>
+        <button type="submit" class="btn-submit">
+          <span id="btn-text">Send message</span>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </button>
+      </form>
     </div>
 
     <div class="contact-map" data-aos="fade-up" data-aos-delay="120" style="margin-top:48px">
@@ -525,10 +562,20 @@
         </div>
 
         <div class="footer-links-col">
+          <h5>Energy</h5>
+          <ul>
+            <li><a href="#solutions">Solar</a></li>
+            <li><a href="#solutions">BESS — Battery Energy Storage</a></li>
+            <li><a href="#solutions">Green Hydrogen</a></li>
+            <li><a href="#solutions">Green Ammonia</a></li>
+            <li><a href="#solutions">Compressed Biogas (CBG)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
           <h5>Contact</h5>
           <ul class="footer-contact">
-            <li><i class="fa-solid fa-phone"></i> +91 99598 00007</li>
-            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:karwakrishna@vedikarenewables.in">karwakrishna@vedikarenewables.in</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:vedikarenewables@gmail.com">vedikarenewables@gmail.com</a></li>
             <li><i class="fa-solid fa-location-dot"></i> Hyderabad, Telangana</li>
           </ul>
           <div class="footer-social">
@@ -567,16 +614,8 @@
   </div>
 </div>
 
-<!-- Scroll to Top -->
-<a class="whatsapp-float" id="whatsapp-float"
-   href="https://wa.me/919959800007?text=Hi%20Vedika%20Renewables%2C%20I%27m%20interested%20in%20your%20renewable%20energy%20services.%20Please%20get%20in%20touch."
-   target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
-  <i class="fa-brands fa-whatsapp"></i>
-  <span class="wa-tooltip">Chat with us</span>
-</a>
-
 <!-- Chat Widget -->
-<div class="chat-widget" id="chat-widget">
+<div class="chat-widget" id="chat-widget" style="display:none">
 
   <!-- Toggle button -->
   <button class="chat-toggle" id="chat-toggle" aria-label="Open chat assistant" aria-expanded="false">

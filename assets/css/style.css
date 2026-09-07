@@ -2182,3 +2182,10 @@ details[open] .faq-icon { transform: rotate(45deg); }
 @media (max-width: 540px) {
   .contact-simple-grid { grid-template-columns: 1fr; }
 }
+
+/* Contact form wrap */
+.contact-form-wrap {
+  margin-top: 48px;
+  max-width: 760px;
+}
+.contact-simple-grid { grid-template-columns: repeat(2, 1fr); max-width: 560px; }
