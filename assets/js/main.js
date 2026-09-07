@@ -194,18 +194,37 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Simulate submission (replace with Formspree / EmailJS / backend endpoint)
       submitBtn.disabled = true;
       btnText.textContent = 'Sending…';
 
-      setTimeout(() => {
-        status.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you — your consultation request has been received. Our team will get in touch shortly.';
-        status.className = 'form-status success';
-        form.reset();
-        submitBtn.disabled = false;
-        btnText.textContent = 'Submit request';
-        status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 1400);
+      const data = new FormData(form);
+      data.append('_subject', 'New enquiry from vedikarenewables.in');
+      data.append('_captcha', 'false');
+
+      fetch('https://formsubmit.co/ajax/vedikarenewables@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.success === 'true' || res.success === true) {
+            status.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you — your message has been received. We\'ll be in touch shortly.';
+            status.className = 'form-status success';
+            form.reset();
+          } else {
+            throw new Error('Submission failed');
+          }
+        })
+        .catch(() => {
+          status.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Something went wrong. Please email us at vedikarenewables@gmail.com.';
+          status.className = 'form-status error';
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          btnText.textContent = 'Send message';
+          status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
     });
 
     form.querySelectorAll('input, textarea, select').forEach(f => {
