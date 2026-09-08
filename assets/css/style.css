@@ -1353,22 +1353,45 @@ details[open] .faq-icon { transform: rotate(45deg); }
 ================================================ */
 .site-footer { color: var(--white); }
 
-.footer-top { padding: 72px 0 48px; }
+.footer-top { padding: 64px 0 48px; }
 
-.footer-grid {
+/* Brand row: logo left + tagline right */
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-logo-link img {
+  height: 80px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.footer-tagline {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0;
+}
+.footer-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 40px;
+}
+
+/* 3-column links row */
+.footer-cols {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   align-items: start;
 }
 
-.footer-logo-link img {
-  height: 90px;
-  width: auto;
-  max-width: 220px;
-  object-fit: contain;
-  margin-bottom: 18px;
-}
+/* keep old .footer-grid harmless */
+.footer-grid { display: none; }
 
 .footer-brand p {
   font-size: 0.87rem;
@@ -2106,8 +2129,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
   .mv-grid         { grid-template-columns: 1fr; }
   .contact-layout  { grid-template-columns: 1fr; gap: 48px; }
   .contact-aside   { position: static; }
-  .footer-grid     { grid-template-columns: 1fr 1fr 1fr; }
-  .footer-brand    { grid-column: span 3; }
+  .footer-cols     { grid-template-columns: 1fr 1fr 1fr; }
+  .footer-brand-row { flex-direction: column; align-items: flex-start; gap: 16px; }
 
   .solution-row {
     grid-template-columns: 1fr 28px;
@@ -2136,8 +2159,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
   .values-grid     { grid-template-columns: 1fr; }
   .insights-grid   { grid-template-columns: 1fr; }
   .form-row-2      { grid-template-columns: 1fr; }
-  .footer-grid     { grid-template-columns: 1fr; }
-  .footer-brand    { grid-column: span 1; }
+  .footer-cols     { grid-template-columns: 1fr; }
+  .footer-brand-row { flex-direction: column; align-items: flex-start; gap: 12px; }
 
   .assurance-strip { flex-direction: column; gap: 16px; }
   .hero-stats-wrap { display: none; }
