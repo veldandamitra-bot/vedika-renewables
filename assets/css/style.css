@@ -1357,8 +1357,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.6fr 1fr 1.2fr 1fr;
+  gap: 48px;
   align-items: start;
 }
 
