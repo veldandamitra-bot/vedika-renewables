@@ -2250,7 +2250,6 @@ details[open] .faq-icon { transform: rotate(45deg); }
   padding: 72px 48px;
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 .contact-heading {
   font-family: var(--font-head);
@@ -2258,44 +2257,45 @@ details[open] .faq-icon { transform: rotate(45deg); }
   font-weight: 800;
   color: var(--white);
   line-height: 1.2;
-  margin-bottom: 16px;
+  margin: 12px 0 16px;
   letter-spacing: -0.02em;
 }
 .contact-tagline {
   font-size: 0.95rem;
   color: rgba(255,255,255,0.6);
   line-height: 1.75;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 .contact-info-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-bottom: 36px;
+  gap: 32px;
+  margin-bottom: 48px;
 }
 .contact-info-item {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 18px;
 }
 .contact-info-icon {
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   background: rgba(255,255,255,0.08);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-lt);
-  font-size: 1rem;
+  font-size: 1.05rem;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 .contact-info-item > div {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 .contact-info-label {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2303,12 +2303,12 @@ details[open] .faq-icon { transform: rotate(45deg); }
 }
 .contact-info-item a,
 .contact-info-item span:not(.contact-info-label) {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.6;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.65;
 }
 .contact-info-item a:hover { color: var(--accent-lt); }
-.contact-map-panel { border-radius: 10px; overflow: hidden; margin-top: auto; }
+.contact-map-panel { border-radius: 12px; overflow: hidden; margin-top: auto; }
 
 /* Right form panel */
 .contact-panel-right {
