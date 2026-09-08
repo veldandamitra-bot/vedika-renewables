@@ -2305,7 +2305,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
 .contact-info-item span:not(.contact-info-label) {
   font-size: 0.9rem;
   color: rgba(255,255,255,0.85);
-  line-height: 1.65;
+  line-height: 1.4;
 }
 .contact-info-item a:hover { color: var(--accent-lt); }
 .contact-map-panel { border-radius: 12px; overflow: hidden; margin-top: auto; }
