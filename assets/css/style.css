@@ -333,22 +333,31 @@ ul, ol { list-style: none; }
 ================================================ */
 .hero {
   position: relative;
-  min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   overflow: hidden;
   background: var(--navy);
 }
 
-/* ── Hero Slideshow ── */
+/* ── Hero Video ── */
 .hero-video {
   position: absolute;
   inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   pointer-events: none;
   z-index: 0;
+}
+
+@media (max-width: 640px) {
+  .hero { min-height: 100svh; }
+  .hero-video {
+    object-position: 60% center;
+    width: 100%;
+    height: 100%;
+  }
 }
 .hero-overlay { z-index: 1; }
 .hero-body, .hero-scroll { z-index: 2; }
