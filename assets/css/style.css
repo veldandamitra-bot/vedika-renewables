@@ -2328,3 +2328,51 @@ details[open] .faq-icon { transform: rotate(45deg); }
   .contact-panel-left { padding: 48px 28px; }
   .contact-panel-right { padding: 48px 28px; }
 }
+
+/* ================================================
+   RESPONSIVE – TABLET 768px
+================================================ */
+@media (max-width: 768px) {
+  /* Nav: show mobile menu full-width drop-down */
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    background: var(--navy);
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0 32px;
+    gap: 8px;
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+  .nav-menu.open { transform: translateY(0); }
+  .nav-link { font-size: 1.05rem; padding: 12px 24px; }
+
+  /* Hero */
+  .hero-lead { font-size: 0.95rem; }
+
+  /* Leader card stacks on tablet */
+  .leader-card { grid-template-columns: 1fr; gap: 28px; }
+  .leader-img { max-width: 280px; margin: 0 auto; }
+
+  /* Footer brand row */
+  .footer-brand-row { flex-direction: column; gap: 16px; }
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-logo-link img { height: 64px; }
+}
+
+/* ================================================
+   RESPONSIVE – SMALL MOBILE 480px
+================================================ */
+@media (max-width: 480px) {
+  .footer-cols { grid-template-columns: 1fr; }
+  .contact-info-list { gap: 20px; }
+  .contact-map-panel iframe { height: 160px; }
+  .form-row-2 { grid-template-columns: 1fr; }
+  .hero-title { font-size: clamp(2rem, 10vw, 2.8rem); }
+  .contact-panel-left { padding: 40px 20px; }
+  .contact-panel-right { padding: 40px 20px; }
+  .footer-top { padding: 48px 0 32px; }
+}

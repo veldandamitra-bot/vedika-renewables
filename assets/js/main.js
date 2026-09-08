@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Clone nav links into drawer
   const links = [
-    ['#home','Home'], ['#solutions','Solutions'], ['#industries','Industries'],
-    ['#about','About'], ['#projects','Capabilities'], ['#calculator','Calculator'], ['#faq','FAQ'], ['#contact','Contact']
+    ['#home','Home'], ['#about','About'], ['#solutions','Solutions'], ['#contact','Contact Us']
   ];
   links.forEach(([href, label]) => {
     const a = document.createElement('a');
@@ -54,11 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     a.textContent = label;
     drawer.appendChild(a);
   });
-  const ctaClone = document.createElement('a');
-  ctaClone.href = '#contact';
-  ctaClone.className = 'btn-cta';
-  ctaClone.textContent = 'Request a Consultation';
-  drawer.appendChild(ctaClone);
 
   header.after(drawer);
 
