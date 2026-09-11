@@ -1402,12 +1402,15 @@ details[open] .faq-icon { transform: rotate(45deg); }
 
 .footer-top { padding: 64px 0 48px; }
 
-/* Brand row: logo left + tagline right */
+/* Brand row: white strip with logo + tagline */
 .footer-brand-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 40px;
-  margin-bottom: 40px;
+  gap: 16px;
+  padding: 40px 24px;
+  background: #ffffff;
+  margin-bottom: 0;
 }
 .footer-logo-link img {
   height: 110px;
@@ -1417,11 +1420,13 @@ details[open] .faq-icon { transform: rotate(45deg); }
   flex-shrink: 0;
 }
 .footer-tagline {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.7;
-  max-width: 500px;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forest-lt);
+  letter-spacing: 0.02em;
   margin: 0;
+  text-align: center;
 }
 .footer-divider {
   border: none;
