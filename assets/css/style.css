@@ -201,14 +201,13 @@ ul, ol { list-style: none; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 900;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  border-bottom: 1px solid transparent;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  transition: box-shadow 0.3s ease;
 }
 .site-header.scrolled {
-  background: rgba(248,250,247,0.97);
-  backdrop-filter: blur(14px);
-  border-color: var(--border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.22);
 }
 
 .nav-inner {
@@ -249,7 +248,7 @@ ul, ol { list-style: none; }
   border-radius: var(--r);
   transition: var(--ease);
 }
-.site-header.scrolled .nav-link { color: var(--text); }
+.site-header.scrolled .nav-link { color: rgba(255,255,255,0.85); }
 .nav-link::after {
   content: '';
   position: absolute;
@@ -265,9 +264,9 @@ ul, ol { list-style: none; }
 .nav-link:hover,
 .nav-link.active { color: var(--accent-lt); }
 .site-header.scrolled .nav-link:hover,
-.site-header.scrolled .nav-link.active { color: var(--primary); }
+.site-header.scrolled .nav-link.active { color: var(--gold); }
 .site-header.scrolled .nav-link:hover::after,
-.site-header.scrolled .nav-link.active::after { background: var(--forest-lt); }
+.site-header.scrolled .nav-link.active::after { background: var(--gold); }
 .nav-link:hover::after,
 .nav-link.active::after { transform: scaleX(1); }
 
@@ -282,7 +281,7 @@ ul, ol { list-style: none; }
   border-radius: var(--r);
   border: 1px solid rgba(255,255,255,0.25);
 }
-.site-header.scrolled .nav-toggle { border-color: var(--border); }
+.site-header.scrolled .nav-toggle { border-color: rgba(255,255,255,0.3); }
 @media (min-width: 1024px) { .nav-toggle { display: none; } }
 
 .nav-toggle span {
@@ -292,7 +291,7 @@ ul, ol { list-style: none; }
   border-radius: 2px;
   transition: var(--ease);
 }
-.site-header.scrolled .nav-toggle span { background: var(--text); }
+.site-header.scrolled .nav-toggle span { background: rgba(255,255,255,0.85); }
 .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
