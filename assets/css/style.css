@@ -2428,7 +2428,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: var(--navy);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2453,13 +2453,13 @@ details[open] .faq-icon { transform: rotate(45deg); }
 .logo-splash-img {
   width: min(280px, 60vw);
   height: auto;
-  filter: drop-shadow(0 0 40px rgba(201,163,80,0.35));
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.10));
 }
 .logo-splash-tagline {
   font-family: var(--font-head);
   font-size: clamp(1.1rem, 3.5vw, 1.6rem);
   font-weight: 600;
-  color: var(--gold);
+  color: var(--forest-lt);
   letter-spacing: 0.04em;
   text-align: center;
   margin: 0;
