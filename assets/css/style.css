@@ -1405,8 +1405,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
 /* Brand row */
 .footer-brand-row {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   gap: 32px;
   margin-bottom: 40px;
 }
