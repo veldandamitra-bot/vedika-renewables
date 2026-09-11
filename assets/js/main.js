@@ -2,6 +2,15 @@
    VEDIKA RENEWABLES — MAIN.JS
    ================================================ */
 
+/* ── Logo Splash ── */
+(function() {
+  const splash = document.getElementById('logo-splash');
+  if (splash) {
+    setTimeout(() => splash.classList.add('fade-out'), 1800);
+    setTimeout(() => { if (splash.parentNode) splash.parentNode.removeChild(splash); }, 2600);
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── AOS Init ── */
