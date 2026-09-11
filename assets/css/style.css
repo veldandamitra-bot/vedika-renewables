@@ -1410,9 +1410,9 @@ details[open] .faq-icon { transform: rotate(45deg); }
   margin-bottom: 40px;
 }
 .footer-logo-link img {
-  height: 80px;
+  height: 110px;
   width: auto;
-  max-width: 200px;
+  max-width: 260px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -2407,7 +2407,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
   /* Footer brand row */
   .footer-brand-row { flex-direction: column; gap: 16px; }
   .footer-cols { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .footer-logo-link img { height: 64px; }
+  .footer-logo-link img { height: 90px; }
 }
 
 /* ================================================
